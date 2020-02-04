@@ -1,0 +1,77 @@
+print("Welcome to result compiler!")
+time.sleep(2)
+print("Created by: Anyika Theodore Hanville")
+time.sleep(2)
+print("\n\nPlease register your students")
+answer_1 = input("enter register to procede(entry is case sensitive) or enter anything alse to end session: ")
+matric =[]
+test_scores = []
+exam_scores = []
+total_scores = []
+grades = []
+
+if answer_1 == "register":
+    no_of_students = int(input("How many students woukld you like to register?: "))
+    time.sleep(1)
+    
+    print("\n\nEnter respective matric numbers")
+    for i in range(0,no_of_students):
+        matric_no = int(input())
+        while type(matric_no) != int:
+            print("\n\nEnter a valid matric number!")
+        matric.append(matric_no)    
+    
+    print("\n\nEnter test scores")
+    for j in range(0,no_of_students):
+        test = int(input())
+        while type(test) != int:
+            print("\n\nEnter a valid test score!")
+        test_scores.append(test)    
+    
+    print("\n\nEnter exam scores")
+    for k in range(0,no_of_students):
+        exam = int(input())
+        while type(exam) != int:
+            print("\n\nEnter a valid exam score!")
+        exam_scores.append(exam)    
+    
+    for m in range(0,no_of_students):
+        total = test_scores[m] + exam_scores[m]
+        total_scores.append(total)
+       
+    for n in range(0,no_of_students):
+        if total_scores[n] <= 30:
+            gra = "F"
+            print(gra)
+        elif total_scores[n] > 30 and total_scores[n] < 45:
+            gra = "E"
+            print(gra)
+        elif total_scores[n] >= 45 and total_scores[n] < 50:
+            gra = "D"
+            print(gra)
+        elif total_scores[n] >= 50 and total_scores[n] < 60:
+            gra = "C"
+            print(gra)
+        elif total_scores[n] >= 60 and total_scores[n] < 70:
+            gra = "B"
+            print(gra)
+        elif total_scores[n] >= 70 and total_scores[n] <=100:
+            gra = "A"
+            print(gra)
+        elif total_scores[n] > 100:
+            grades.append("Invalid score")
+        
+        grades.append(gra)
+        
+    
+    print("\n\nTo view the results enter: view")
+    request = input()
+    if request == "view":
+        data = {'matric no':matric,'C/A':test_scores,'Exam':exam_scores,'Total':total_scores, 'Grade':grades}
+        frame = pd.DataFrame(data)
+        print(frame)
+    else:
+        print("\n\nThank you for using this App")
+    
+else:
+    print("\n\nThank you for using this App\n")

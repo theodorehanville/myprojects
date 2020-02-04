@@ -1,0 +1,89 @@
+HACKING INCIDENT
+
+encryption
+def encrypt(text,shift):
+    '''
+    INPUT: text as a string and an integer as a shift
+    OUTPUT: shifter text after being run through the ceaser cipher
+    '''
+    import string
+    new_text = []
+    alpha = list(string.ascii_lowercase)
+    alpha1 = alpha[:-shift]
+    alpha2 = alpha[-shift:]
+    alpha2.reverse()
+    for j in alpha2:
+        alpha1.insert(0,j)
+    
+    
+    for k in text:
+        if k in alpha:
+            index_no = alpha.index(k)
+            k = alpha1[index_no]
+            new_text.append(k)
+        else:
+            new_text.append(k)
+            
+    encrypted_text = ''.join(new_text)
+    print(encrypted_text)
+            
+
+
+
+
+DECRYPTION
+
+def decrypt(text,shift):
+    import string
+    new_text = []
+    alpha = list(string.ascii_lowercase)
+    alpha1 = alpha[:-shift]
+    alpha2 = alpha[-shift:]
+    alpha2.reverse()
+    for j in alpha2:
+        alpha1.insert(0,j)
+    
+
+    for k in text:
+        if k in alpha1:
+            index_no = alpha1.index(k)
+            k = alpha[index_no]
+            new_text.append(k)
+
+        else:
+            new_text.append(k)
+            
+    encrypted_text = ''.join(new_text)
+    print(encrypted_text)
+                
+
+
+BRUTE FORCE
+
+def brute_force(text):
+    for l in range(26):
+        import string
+        new_text = []
+        alpha = list(string.ascii_lowercase)
+        alpha1 = alpha[:-l]
+        alpha2 = alpha[-l:]
+        alpha2.reverse()
+        for j in alpha2:
+            alpha1.insert(0,j)
+
+
+        for k in text:
+            if k in alpha1:
+                index_no = alpha1.index(k)
+                k = alpha[index_no]
+                new_text.append(k)
+
+            else:
+                new_text.append(k)
+
+        encrypted_text = ''.join(new_text)
+        print(text)
+        print(encrypted_text)
+        print('\n')
+
+    
